@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { setUser } from "../store/auth";
-import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+import { login } from "../firebase";
 
 const images = [
   "/screenshot1-2x.png",
@@ -10,7 +10,6 @@ const images = [
   "/screenshot4-2x.png",
 ];
 function LoginPage() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,7 +18,7 @@ function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const enable = username && password;
 
@@ -31,13 +30,9 @@ function LoginPage() {
     return () => clearInterval(interval);
   }, [current]);
 
-  const handleSubmit = (e) => {
-    e.prevenDefault();
-    dispatch(
-      setUser({
-        username,
-      })
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(username, password);
     navigate(location.state?.return_url || "/", {
       replace: true,
     });
@@ -75,6 +70,7 @@ function LoginPage() {
               className="text-xs w-full mb-2 rounded border bg-gray-100 border-gray-300 px-2 py-2 focus:outline-none focus:border-gray-400 active:outline-none"
               id="email"
               placeholder="Phone number, username, or email"
+              autoComplete="true"
               type="text"
               required
             />
@@ -108,11 +104,11 @@ function LoginPage() {
             </button>
           </form>
           <div className="flex justify-evenly space-x-2 w-64 mt-4">
-            <span className="bg-gray-300 h-px flex-grow t-2 relative top-2"></span>
+            <span className="bg-gray-300 h-px flex-grow relative top-2"></span>
             <span className="flex-none uppercase text-xs text-gray-400 font-semibold">
               or
             </span>
-            <span className="bg-gray-300 h-px flex-grow t-2 relative top-2"></span>
+            <span className="bg-gray-300 h-px flex-grow relative top-2"></span>
           </div>
           <button className="mt-4 flex items-center">
             <img
