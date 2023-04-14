@@ -25,8 +25,8 @@ function Loader() {
     //   </svg>
     //   Processing...
     // </div>
-    <div class="relative flex min-h-screen items-center justify-center bg-zinc-50">
-      <h1 class="animate-torch select-none whitespace-nowrap bg-gradient-to-r from-white via-black to-white bg-[length:100px_30px] bg-clip-text bg-no-repeat text-lg font-bold uppercase text-transparent sm:bg-[length:200px_50px] sm:text-4xl">
+    <div className="relative flex min-h-screen items-center justify-center bg-zinc-50">
+      <h1 className="animate-torch select-none whitespace-nowrap bg-gradient-to-r from-white via-black to-white bg-[length:100px_30px] bg-clip-text bg-no-repeat text-lg font-bold uppercase text-transparent sm:bg-[length:200px_50px] sm:text-4xl">
         Instagram Loading...
       </h1>
     </div>

@@ -49,7 +49,7 @@ function LoginPage() {
         </div>
       </div>
 
-      <div className="h-screen bg-gray-50 flex flex-col flex-wrap overflow-auto justify-center items-center">
+      <div className="md:h-screen md:mt-11 bg-gray-50 flex flex-col justify-center items-center">
         <div className="bg-white border border-gray-300 w-80 py-8 flex items-center flex-col mb-3">
           <Link to="#">
             <img
