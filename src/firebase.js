@@ -19,7 +19,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const auth = getAuth();
 
@@ -29,7 +29,7 @@ onAuthStateChanged(auth, (user) => {
 
 export const login = async (email, password) => {
   try {
-    const response = await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     toast.error(error.code);
   }

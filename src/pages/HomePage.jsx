@@ -4,7 +4,7 @@ import Header from "../components/Navbar";
 function HomePage() {
   return (
     <div className="flex">
-      <div className="w-[244px] bg-zinc-50 h-screen">
+      <div className="w-[244px] h-screen  border-r border-gray-300">
         <Header />
       </div>
 

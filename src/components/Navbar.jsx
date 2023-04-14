@@ -1,26 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Search from "./Search";
 import { logout } from "../firebase";
 
 function Header() {
   return (
-    <header className="flex flex-col bg-white border-r border-gray-300 px-3 pt-2 pb-5">
-      {/* <div className="flex items-center justify-between h-[60px] container mx-auto">
-        <Link to="/">
-          <img
-            className="h-[29px]"
-            src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
-          />
-        </Link>
-
-        <Search />
-
-        <nav>
-          <button onClick={logout}>Logout</button>
-        </nav>
-      </div> */}
-
+    <header className="flex flex-col px-3 pt-2 pb-5">
       {/* LOGO */}
       <div className="px-3 pt-[25px] mb-[19px]">
         <img

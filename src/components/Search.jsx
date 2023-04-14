@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 function Search() {
   return (
     <form className="w-[268px] relative">

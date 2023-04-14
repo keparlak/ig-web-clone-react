@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import { setUser } from "../store/auth";
 import { useNavigate, useLocation } from "react-router-dom";
 import { login } from "../firebase";
+import { Form, Formik } from "formik";
+import { LoginSchema } from "../validation";
+import Input from "../components/Input";
+import { Link } from "react-router-dom";
 
 const images = [
   "/screenshot1-2x.png",
@@ -15,13 +18,6 @@ function LoginPage() {
 
   const [current, setCurrent] = useState(0);
 
-  const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => setShowPassword(!showPassword);
-
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const enable = username && password;
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((current + 1) % images.length);
@@ -30,9 +26,8 @@ function LoginPage() {
     return () => clearInterval(interval);
   }, [current]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await login(username, password);
+  const handleSubmit = async (values, actions) => {
+    await login(values.username, values.password);
     navigate(location.state?.return_url || "/", {
       replace: true,
     });
@@ -56,14 +51,14 @@ function LoginPage() {
 
       <div className="h-screen bg-gray-50 flex flex-col flex-wrap overflow-auto justify-center items-center">
         <div className="bg-white border border-gray-300 w-80 py-8 flex items-center flex-col mb-3">
-          <a href="#">
+          <Link to="#">
             <img
               src="https://www.vectorlogo.zone/logos/instagram/instagram-wordmark.svg"
               alt=""
               className="w-[174px]"
             />
-          </a>
-          <form onSubmit={handleSubmit} className="mt-8 w-64 flex flex-col">
+          </Link>
+          {/* <form onSubmit={handleSubmit} className="mt-8 w-64 flex flex-col">
             <input
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -102,7 +97,38 @@ function LoginPage() {
             >
               Log In
             </button>
-          </form>
+          </form> */}
+          <Formik
+            validationSchema={LoginSchema}
+            initialValues={{
+              username: "",
+              password: "",
+            }}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting, isValid, dirty, values }) => (
+              <Form className="mt-8 w-64 flex flex-col">
+                <Input
+                  name="username"
+                  autoComplete="username"
+                  placeholder="Phone number, username, or email"
+                />
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  autoComplete="current-password"
+                />
+                <button
+                  type="submit"
+                  disabled={!isValid || !dirty || isSubmitting}
+                  className="h-[30px] mt-1 rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
+                >
+                  Log In
+                </button>
+              </Form>
+            )}
+          </Formik>
           <div className="flex justify-evenly space-x-2 w-64 mt-4">
             <span className="bg-gray-300 h-px flex-grow relative top-2"></span>
             <span className="flex-none uppercase text-xs text-gray-400 font-semibold">
@@ -120,13 +146,13 @@ function LoginPage() {
               Log in with Facebook
             </span>
           </button>
-          <a className="text-xs text-blue-900 mt-4 cursor-pointer -mb-4">
+          <Link className="text-xs text-blue-900 mt-4 cursor-pointer -mb-4">
             Forgot password?
-          </a>
+          </Link>
         </div>
         <div className="bg-white border border-gray-300 text-center w-80 py-4">
           <span className="text-xs mr-1">Don't have an account?</span>
-          <a className="text-blue-500 text-sm font-semibold">Sign up</a>
+          <Link className="text-blue-500 text-sm font-semibold">Sign up</Link>
         </div>
         <div className="mt-3 text-center">
           <span className="text-sm">Get the app</span>
