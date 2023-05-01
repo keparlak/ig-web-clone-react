@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { login } from "../firebase";
+import { login } from "../../firebase";
 import { Form, Formik } from "formik";
-import { LoginSchema } from "../validation";
-import Input from "../components/Input";
+import { LoginSchema } from "../../validation";
+import Input from "../../components/Input";
 import { Link } from "react-router-dom";
+import Button from "../../components/Button";
+import Seperator from "../../components/Seperator";
 
 const images = [
   "/screenshot1-2x.png",
@@ -27,10 +29,11 @@ function LoginPage() {
   }, [current]);
 
   const handleSubmit = async (values, actions) => {
-    await login(values.username, values.password);
-    navigate(location.state?.return_url || "/", {
+    const response = await login(values.username, values.password);
+    if(response){
+      navigate(location.state?.return_url || "/", {
       replace: true,
-    });
+    });}
   };
   return (
     <>
@@ -58,46 +61,7 @@ function LoginPage() {
               className="w-[174px]"
             />
           </Link>
-          {/* <form onSubmit={handleSubmit} className="mt-8 w-64 flex flex-col">
-            <input
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="text-xs w-full mb-2 rounded border bg-gray-100 border-gray-300 px-2 py-2 focus:outline-none focus:border-gray-400 active:outline-none"
-              id="email"
-              placeholder="Phone number, username, or email"
-              autoComplete="true"
-              type="text"
-              required
-            />
-            <label className="relative">
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="true"
-                className="text-xs w-full mb-4 rounded border bg-gray-100 border-gray-300 px-2 py-2 focus:outline-none focus:border-gray-400 active:outline-none pr-10 text-ellipsis"
-                id="password"
-                required
-                placeholder="Password"
-                type={showPassword ? "text" : "password"}
-              />
-              <button
-                type="button"
-                className={`${
-                  password !== "" ? "visible" : "invisible"
-                } absolute top-2 right-2 h-1/2 flex items-start text-xs font-semibold`}
-                onClick={togglePasswordVisibility}
-              >
-                {showPassword ? "Show" : "Hide"}
-              </button>
-            </label>
-            <button
-              type="submit"
-              disabled={!enable}
-              className=" text-sm text-center bg-brand text-white py-2 px-4 rounded-lg font-medium disabled:bg-brand/70"
-            >
-              Log In
-            </button>
-          </form> */}
+          
           <Formik
             validationSchema={LoginSchema}
             initialValues={{
@@ -119,23 +83,16 @@ function LoginPage() {
                   placeholder="Password"
                   autoComplete="current-password"
                 />
-                <button
+                <Button
                   type="submit"
                   disabled={!isValid || !dirty || isSubmitting}
-                  className="h-[30px] mt-1 rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
                 >
                   Log In
-                </button>
+                </Button>
               </Form>
             )}
           </Formik>
-          <div className="flex justify-evenly space-x-2 w-64 mt-4">
-            <span className="bg-gray-300 h-px flex-grow relative top-2"></span>
-            <span className="flex-none uppercase text-xs text-gray-400 font-semibold">
-              or
-            </span>
-            <span className="bg-gray-300 h-px flex-grow relative top-2"></span>
-          </div>
+          <Seperator/>
           <button className="mt-4 flex items-center">
             <img
               src="https://cdn-icons-png.flaticon.com/512/124/124010.png"
@@ -152,7 +109,7 @@ function LoginPage() {
         </div>
         <div className="bg-white border border-gray-300 text-center w-80 py-4">
           <span className="text-xs mr-1">Don't have an account?</span>
-          <Link className="text-blue-500 text-sm font-semibold">Sign up</Link>
+          <Link to="/auth/register" className="text-blue-500 text-sm font-semibold">Sign up</Link>
         </div>
         <div className="mt-3 text-center">
           <span className="text-sm">Get the app</span>

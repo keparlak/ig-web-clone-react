@@ -1,7 +1,8 @@
 import AuthLayout from "./pages/auth";
 import HomePage from "./pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/auth/LoginPage";
+import RegisterPage from "./pages/auth/RegisterPage";
 
 const routes = [
   {
@@ -16,6 +17,10 @@ const routes = [
       {
         path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
       },
     ],
   },

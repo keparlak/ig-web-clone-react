@@ -4,6 +4,8 @@ module.exports = {
     extend: {
       colors: {
         brand: "#0095f6",
+        secondary: "#737373",
+        link: "#00376b",
       },
       backgroundImage: {
         "login-bg":

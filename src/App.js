@@ -8,19 +8,9 @@ import routes from "./routes";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
-  const [redirect, setRedirect] = useState(false);
   const showRoutes = useRoutes(routes);
 
-  useEffect(() => {
-    let timeout = setTimeout(() => {
-      setRedirect(true);
-    }, 1000);
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  if (!user && !redirect) {
+  if (user === null) {
     return <Loader />;
   }
 

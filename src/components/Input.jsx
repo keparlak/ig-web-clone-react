@@ -25,7 +25,7 @@ export default function Input({ placeHolder, type = "text", ...props }) {
           className={`absolute top-2 right-2 h-1/2 flex items-start text-xs font-semibold`}
           onClick={togglePasswordVisibility}
         >
-          {showPassword ? "Show" : "Hide"}
+          {showPassword ? "Hide" : "Show"}
         </button>
       )}
     </label>

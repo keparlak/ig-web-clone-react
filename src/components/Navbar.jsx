@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { logout } from "../firebase";
 
-function Header() {
+function Navbar() {
   return (
     <header className="flex flex-col px-3 pt-2 pb-5">
       {/* LOGO */}
@@ -14,45 +14,78 @@ function Header() {
         />
       </div>
       {/* NAVBAR */}
-      <div className="p-4">
+      <div className="">
         <ul>
           <li className="mb-4">
-            <Link to="#" className="flex items-center">
+            <NavLink exact activeClassName="font-bold" to="" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
               <span className="mr-2">
                 <i className="far fa-user-circle" />
               </span>
-              <span>Profile</span>
-            </Link>
+              <span>Ana Sayfa</span>
+            </NavLink>
           </li>
           <li className="mb-4">
-            <Link to="#" className="flex items-center">
+            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
               <span className="mr-2">
                 <i className="far fa-plus-square" />
               </span>
-              <span>New Post</span>
-            </Link>
+              <span>Ara</span>
+            </NavLink>
           </li>
           <li className="mb-4">
-            <Link to="#" className="flex items-center">
+            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
               <span className="mr-2">
                 <i className="far fa-heart" />
               </span>
-              <span>Activity</span>
-            </Link>
+              <span>Keşfet</span>
+            </NavLink>
           </li>
-          <li>
-            <Link to="#" className="flex items-center">
+          <li className="mb-4">
+            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
               <span className="mr-2">
                 <i className="far fa-comments" />
               </span>
-              <span>Messages</span>
-            </Link>
+              <span>Reels</span>
+            </NavLink>
+          </li>
+          
+          <li className="mb-4">
+            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+              <span className="mr-2">
+                <i className="far fa-comments" />
+              </span>
+              <span>Mesajlar</span>
+            </NavLink>
+          </li>          
+          <li className="mb-4">
+            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+              <span className="mr-2">
+                <i className="far fa-comments" />
+              </span>
+              <span>Bildirimler</span>
+            </NavLink>
+          </li>          
+          <li className="mb-4">
+            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+              <span className="mr-2">
+                <i className="far fa-comments" />
+              </span>
+              <span>Oluştur</span>
+            </NavLink>
+          </li>          
+          <li className="mb-4">
+            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+              <span className="mr-2">
+                <i className="far fa-comments" />
+              </span>
+              <span>Profil</span>
+            </NavLink>
           </li>
         </ul>
       </div>
 
       {/* MORE DROPDOWN */}
-      <div className="fixed bottom-0">
+      <div className="flex flex-col fixed bottom-0">
         <button onClick={logout}>Logout</button>
         <button>MORE</button>
       </div>
@@ -60,4 +93,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navbar;
