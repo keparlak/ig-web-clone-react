@@ -1,7 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 
 import Loader from "./components/Loader";
 import routes from "./routes";
