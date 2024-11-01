@@ -1,12 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { login } from "../../firebase";
 import { Form, Formik } from "formik";
-import { RegisterSchema  } from "../../validation";
+import { RegisterSchema } from "../../validation";
 import Input from "../../components/Input";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import Seperator from "../../components/Seperator";
-
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -14,10 +13,11 @@ function RegisterPage() {
 
   const handleSubmit = async (values, actions) => {
     const response = await login(values.username, values.password);
-    if(response){
+    if (response) {
       navigate(location.state?.return_url || "/", {
-      replace: true,
-    });}
+        replace: true,
+      });
+    }
   };
   return (
     <>
@@ -30,10 +30,12 @@ function RegisterPage() {
               className="w-[174px]"
             />
           </Link>
-          <p className="text-[17px] font-semibold leading-5	mx-10 text-center text-secondary mb-4">Sign up to see photos and videos from your friends.</p>
+          <p className="text-[17px] font-semibold leading-5	mx-10 text-center text-secondary mb-4">
+            Sign up to see photos and videos from your friends.
+          </p>
           <Button>Log in with Facebook</Button>
-          
-          <Seperator/>
+
+          <Seperator />
           <Formik
             validationSchema={RegisterSchema}
             initialValues={{
@@ -67,8 +69,23 @@ function RegisterPage() {
                   placeholder="Password"
                   autoComplete="current-password"
                 />
-                <span className="text-xs text-center text-secondary">People who use our service may have uploaded your contact information to Instagram. <a href="#" className="text-link">Learn More </a></span>
-                <span className="text-xs text-center text-secondary">By signing up, you agree to our <a href="#" className="text-link">Terms</a> , <a href="#" className="text-link">Data Policy and Cookies Policy.</a></span>
+                <span className="text-xs text-center text-secondary">
+                  People who use our service may have uploaded your contact
+                  information to Instagram.{" "}
+                  <a href="#" className="text-link">
+                    Learn More{" "}
+                  </a>
+                </span>
+                <span className="text-xs text-center text-secondary">
+                  By signing up, you agree to our{" "}
+                  <a href="javascript:void(0)" className="text-link">
+                    Terms
+                  </a>{" "}
+                  ,{" "}
+                  <a href="javascript:void(0)" className="text-link">
+                    Data Policy and Cookies Policy.
+                  </a>
+                </span>
                 <Button
                   type="submit"
                   disabled={!isValid || !dirty || isSubmitting}
@@ -81,7 +98,12 @@ function RegisterPage() {
         </div>
         <div className="bg-white border border-gray-300 text-center w-80 py-4">
           <span className="text-xs mr-1">Have an account?</span>
-          <Link to="/auth/login" className="text-blue-500 text-sm font-semibold">Log In</Link>
+          <Link
+            to="/auth/login"
+            className="text-blue-500 text-sm font-semibold"
+          >
+            Log In
+          </Link>
         </div>
         <div className="mt-3 text-center">
           <span className="text-sm">Get the app</span>

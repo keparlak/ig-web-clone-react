@@ -17,7 +17,12 @@ function Navbar() {
       <div className="">
         <ul>
           <li className="mb-4">
-            <NavLink exact activeClassName="font-bold" to="" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+            <NavLink
+              exact
+              activeClassName="font-bold"
+              to=""
+              className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md"
+            >
               <span className="mr-2">
                 <i className="far fa-user-circle" />
               </span>
@@ -25,7 +30,12 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="mb-4">
-            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+            <NavLink
+              exact
+              activeClassName="font-bold"
+              to="/"
+              className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md"
+            >
               <span className="mr-2">
                 <i className="far fa-plus-square" />
               </span>
@@ -33,7 +43,12 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="mb-4">
-            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+            <NavLink
+              exact
+              activeClassName="font-bold"
+              to="/"
+              className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md"
+            >
               <span className="mr-2">
                 <i className="far fa-heart" />
               </span>
@@ -41,40 +56,65 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="mb-4">
-            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+            <NavLink
+              exact
+              activeClassName="font-bold"
+              to="/"
+              className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md"
+            >
               <span className="mr-2">
                 <i className="far fa-comments" />
               </span>
               <span>Reels</span>
             </NavLink>
           </li>
-          
+
           <li className="mb-4">
-            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+            <NavLink
+              exact
+              activeClassName="font-bold"
+              to="/"
+              className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md"
+            >
               <span className="mr-2">
                 <i className="far fa-comments" />
               </span>
               <span>Mesajlar</span>
             </NavLink>
-          </li>          
+          </li>
           <li className="mb-4">
-            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+            <NavLink
+              exact
+              activeClassName="font-bold"
+              to="/"
+              className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md"
+            >
               <span className="mr-2">
                 <i className="far fa-comments" />
               </span>
               <span>Bildirimler</span>
             </NavLink>
-          </li>          
+          </li>
           <li className="mb-4">
-            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+            <NavLink
+              exact
+              activeClassName="font-bold"
+              to="/"
+              className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md"
+            >
               <span className="mr-2">
                 <i className="far fa-comments" />
               </span>
               <span>Oluştur</span>
             </NavLink>
-          </li>          
+          </li>
           <li className="mb-4">
-            <NavLink exact activeClassName="font-bold" to="/" className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md">
+            <NavLink
+              exact
+              activeClassName="font-bold"
+              to="/"
+              className="flex items-center active:font-bold p-3 hover:bg-black/5 rounded-md"
+            >
               <span className="mr-2">
                 <i className="far fa-comments" />
               </span>

@@ -30,10 +30,11 @@ function LoginPage() {
 
   const handleSubmit = async (values, actions) => {
     const response = await login(values.username, values.password);
-    if(response){
+    if (response) {
       navigate(location.state?.return_url || "/", {
-      replace: true,
-    });}
+        replace: true,
+      });
+    }
   };
   return (
     <>
@@ -61,7 +62,7 @@ function LoginPage() {
               className="w-[174px]"
             />
           </Link>
-          
+
           <Formik
             validationSchema={LoginSchema}
             initialValues={{
@@ -92,7 +93,7 @@ function LoginPage() {
               </Form>
             )}
           </Formik>
-          <Seperator/>
+          <Seperator />
           <button className="mt-4 flex items-center">
             <img
               src="https://cdn-icons-png.flaticon.com/512/124/124010.png"
@@ -109,7 +110,12 @@ function LoginPage() {
         </div>
         <div className="bg-white border border-gray-300 text-center w-80 py-4">
           <span className="text-xs mr-1">Don't have an account?</span>
-          <Link to="/auth/register" className="text-blue-500 text-sm font-semibold">Sign up</Link>
+          <Link
+            to="/auth/register"
+            className="text-blue-500 text-sm font-semibold"
+          >
+            Sign up
+          </Link>
         </div>
         <div className="mt-3 text-center">
           <span className="text-sm">Get the app</span>
